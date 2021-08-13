@@ -36,7 +36,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'hotel.User'
 # Application definition
 
 INSTALLED_APPS = [

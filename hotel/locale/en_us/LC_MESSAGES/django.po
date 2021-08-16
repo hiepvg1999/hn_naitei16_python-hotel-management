@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-16 11:04+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:11
+msgid "User Name"
+msgstr ""
+
+#: forms.py:15
+msgid "First Name"
+msgstr ""
+
+#: forms.py:19
+msgid "Last Name"
+msgstr ""
+
+#: forms.py:23
+msgid "Email"
+msgstr ""
+
+#: forms.py:28
+msgid "Password"
+msgstr ""
+
+#: forms.py:33
+msgid "Conrfirm Password"
+msgstr ""
+
+#: forms.py:46
+msgid "Username is already in use."
+msgstr ""
+
+#: models.py:11
+msgid "email address"
+msgstr ""
+
+#: templates/index.html:2
+msgid "Hello"
+msgstr ""
+
+#: templates/index.html:4
+msgid "User:"
+msgstr ""
+
+#: templates/index.html:5
+msgid "Logout"
+msgstr ""
+
+#: templates/index.html:7 templates/registration/login.html:26
+msgid "Login"
+msgstr ""
+
+#: templates/registration/login.html:3
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:8
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
+msgstr ""
+
+#: templates/registration/login.html:10
+msgid "Please login to see this page."
+msgstr ""
+
+#: templates/registration/login.html:31
+msgid "Lost password?"
+msgstr ""
+
+#: templates/registration/register.html:2
+msgid "Register"
+msgstr ""
+
+#: templates/registration/register.html:8
+msgid "Submit"
+msgstr ""

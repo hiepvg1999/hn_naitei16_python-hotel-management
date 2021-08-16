@@ -1,0 +1,8 @@
+{% load i18n %}
+<h1>{% trans 'Hello' %}</h1>
+{% if user.is_authenticated %}
+    <li>{% trans "User:" %} {{ user.get_username }}</li>
+    <li><a href="{% url 'logout' %}?next={{request.path}}">{% trans "Logout" %}</a></li>
+{% else %}
+    <li><a href="{% url 'login' %}?next={{request.path}}">{% trans "Login" %}</a></li>
+{% endif %}

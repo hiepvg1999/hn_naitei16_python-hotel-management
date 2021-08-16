@@ -1,8 +1,27 @@
 {% load i18n %}
-<h1>{% trans 'Hello' %}</h1>
-{% if user.is_authenticated %}
-    <li>{% trans "User:" %} {{ user.get_username }}</li>
-    <li><a href="{% url 'logout' %}?next={{request.path}}">{% trans "Logout" %}</a></li>
-{% else %}
-    <li><a href="{% url 'login' %}?next={{request.path}}">{% trans "Login" %}</a></li>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Hotel Management System" %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static 'css/css2.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/9c206210e0.js' %}"></script>
+</head>
+<body>
+    {% include 'base/nav.html' %}
+    {% block context %}
+
+    {% endblock %}
+    {% include 'base/footer.html' %}
+</body>
+</html>

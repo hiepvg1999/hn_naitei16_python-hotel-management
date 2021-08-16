@@ -1,0 +1,45 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
+{% load i18n %}
+<div class="container">
+    <div class="shadow-lg p-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row mt-5">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="item-quantity"><b>{% trans "Number Of Beds:" %} </b></label>
+                        <input type="number" min="1" class="form-control border border-secondary"
+                            value="{{ room.numberOfBeds }}" id="id_numberOfBeds" name="numberOfBeds">
+                    </div>
+                    <div class="form-group">
+                        <label for="item-quantity"><b>{% trans "Price:" %} </b></label>
+                        <input type="number" min="0" step="0.1" class="form-control border border-secondary"
+                            value="{{ room.room_price }}" id="id_price" name="room_price">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group ">
+                        <label for="item-type"><b>{% trans "Capacity :" %} </b></label>
+                        <input type="number" min="1" class="form-control border border-secondary"
+                            value="{{ room.capacity }}" id="id_capacity" name="capacity">
+                    </div>
+                    <div class="form-group">
+                        <label for="item-quantity"><b>{% trans "Room Type" %}</b></label>
+                        <select name="roomType" required="" id="id_roomType"
+                            class="form-control border border-secondary">
+                            {% for type in room_types %}
+                            <option value="{{ type }}" {% if room.roomType == type %} selected {% endif %}>{{ type }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-outline-success float-right">{% trans "Save Changes" %} </button>
+                </div>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+{% endblock %}

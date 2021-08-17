@@ -4,8 +4,10 @@ from django.contrib import messages
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import Room, Booking, RoomImage
-from .forms import NewUserForm, EditRoomForm
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from .models import Room, Booking, RoomImage, User
+from .forms import NewUserForm, EditRoomForm, UserForm
 from datetime import datetime, date, timedelta
 import random
 from hotel.utils import constant
@@ -149,3 +151,22 @@ def make_booking(request):
 
 def list_booking(request):
     pass
+
+# user profile
+class UserProfileView(LoginRequiredMixin, generic.DetailView):
+    model = User
+    template_name = 'user/user-profile.html'
+    
+    def get_object(self):
+        return self.request.user
+
+@login_required(login_url='login')
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("user-profile")
+    else:
+        form = UserForm(instance=request.user)
+    return render(request, 'user/edit-profile.html', {'form': form})

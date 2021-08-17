@@ -1,0 +1,20 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
+{% load i18n %}
+<div class="container">
+    <div class="shadow-lg p-5">
+        <div class="row mt-5">
+            <div class="col-12">
+                <form method ="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{form.as_table}}
+                    </table>
+                    <button type="submit" name="submit" class="btn btn-success float-right">{% trans 'Save' %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

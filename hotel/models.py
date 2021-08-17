@@ -28,7 +28,7 @@ class Room(models.Model):
     description = models.TextField(max_length=100)
 
     def __str__(self):
-        return str(self.room_id)
+        return str(self.id)
 
 class Booking(models.Model):
     STATUS_TYPE = (

@@ -1,0 +1,44 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
+{% load i18n %}
+<div class="container">
+    <div class="shadow-lg p-5">
+        <div class="row mt-5">
+            <div class="col-6">
+                <div class="p-2 h4">
+                    <span>{% trans "Room Number:" %}</span>
+                    <span class="font-weight-normal">{{room.id}}</span>
+                </div>
+                <div class="p-2 h4">
+                    <span>{% trans "Number Of Beds:" %}</span>
+                    <span class="font-weight-normal">{{room.numberOfBeds}}</span>
+                </div>
+                <div class="p-2 h4">
+                    <span>{% trans "Price:" %}</span>
+                    <span class="font-weight-normal">{{room.room_price}}</span>
+                </div>
+                <div class="p-2 h4">
+                    <span>{% trans "Room Type:" %}</span>
+                    <span class="font-weight-normal">{{ room.roomType}}</span>
+                </div>
+                <div class="p-2 h4">
+                    <span>{% trans "Capacity: " %}</span>
+                    <span class="font-weight-normal">{{room.capacity}}</span>
+                </div>
+                <div class="p-2 h4">
+                    <span>{% trans "Description:" %}</span>
+                    <span class="font-weight-normal">{{room.description}}</span>
+                </div>
+                <div class="image">
+                    {%for url in img_urls%}
+                        <div class="col-4">
+                            <img src="{% static url %}" />
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,11 +2,11 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm
 from phonenumber_field.modelfields import PhoneNumberField
-from .models import User
+from .models import User, Room
 
 class NewUserForm(UserCreationForm):
-    
     username = forms.CharField(
         label=_('User Name'),
         required=True,
@@ -35,13 +35,16 @@ class NewUserForm(UserCreationForm):
         required=True
     )
     phoneNumber = PhoneNumberField()
-
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'phoneNumber', 'password1', 'password2')
-        
     def clean_username(self):
         username = self.cleaned_data['username']
         if User.objects.filter(username__iexact=username).exists():
             raise forms.ValidationError(_("Username is already in use."))
         return username
+
+class EditRoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = ["capacity", "numberOfBeds", "room_price", "roomType"]

@@ -1,0 +1,42 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
+{% load i18n %}
+<div class="container">
+    <div class="shadow-lg p-5">
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="p-2 h4">
+                    <span>{% trans 'First Name:'%}</span>
+                    <span class="font-weight-normal">{{user.first_name}} </span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>{% trans 'Surname:' %}</span>
+                    <span class="font-weight-normal"> {{user.last_name}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>{% trans 'Email:' %}</span>
+                    <span class="font-weight-normal">{{user.email}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>{% trans 'Phone Number:' %}</span>
+                    <span class="font-weight-normal">{{user.phoneNumber}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>{% trans 'Account Creation Date:' %}</span>
+                    <span class="font-weight-normal">{{user.date_joined}}</span>
+                </div>
+                {% if user.id == request.user.id %}
+                    <a href="{% url 'edit-profile' %}">
+                        <button type="submit" name="submit" class="btn btn-success float-right">{% trans 'Edit' %}</button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

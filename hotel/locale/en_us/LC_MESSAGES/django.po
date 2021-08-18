@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-16 11:04+0700\n"
+"POT-Creation-Date: 2021-08-18 09:40+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,28 +41,56 @@ msgstr ""
 msgid "Conrfirm Password"
 msgstr ""
 
-#: forms.py:46
+#: forms.py:44
 msgid "Username is already in use."
 msgstr ""
 
-#: models.py:11
+#: models.py:12
 msgid "email address"
 msgstr ""
 
-#: templates/index.html:2
-msgid "Hello"
+#: templates/base/footer.html:5
+msgid "Hotel Management System - IT Training 2021 ©"
 msgstr ""
 
-#: templates/index.html:4
-msgid "User:"
+#: templates/base/nav.html:9
+msgid "Admin"
 msgstr ""
 
-#: templates/index.html:5
-msgid "Logout"
+#: templates/base/nav.html:11
+msgid "Guest"
 msgstr ""
 
-#: templates/index.html:7 templates/registration/login.html:26
-msgid "Login"
+#: templates/base/nav.html:14
+msgid "Welcome to our hotel"
+msgstr ""
+
+#: templates/base/nav.html:26
+msgid "Options"
+msgstr ""
+
+#: templates/base/nav.html:31
+msgid "Rooms"
+msgstr ""
+
+#: templates/base/nav.html:32
+msgid "Add room"
+msgstr ""
+
+#: templates/base/nav.html:34 templates/base/nav.html:37
+msgid "Room"
+msgstr ""
+
+#: templates/base/nav.html:43
+msgid "Log Out"
+msgstr ""
+
+#: templates/base/nav.html:47
+msgid "Log In"
+msgstr ""
+
+#: templates/index.html:8
+msgid "Hotel Management System"
 msgstr ""
 
 #: templates/registration/login.html:3
@@ -79,6 +107,10 @@ msgstr ""
 msgid "Please login to see this page."
 msgstr ""
 
+#: templates/registration/login.html:26
+msgid "Login"
+msgstr ""
+
 #: templates/registration/login.html:31
 msgid "Lost password?"
 msgstr ""
@@ -89,4 +121,126 @@ msgstr ""
 
 #: templates/registration/register.html:8
 msgid "Submit"
+msgstr ""
+
+#: templates/room/room-add.html:14 templates/room/room-edit.html:12
+#: templates/room/room-profile.html:14
+msgid "Number Of Beds:"
+msgstr ""
+
+#: templates/room/room-add.html:19 templates/room/room-edit.html:17
+#: templates/room/room-profile.html:18
+msgid "Price:"
+msgstr ""
+
+#: templates/room/room-add.html:26
+msgid "Capacity:"
+msgstr ""
+
+#: templates/room/room-add.html:32 templates/room/room-profile.html:22
+msgid "Room Type:"
+msgstr ""
+
+#: templates/room/room-add.html:44
+msgid "Add Room"
+msgstr ""
+
+#: templates/room/room-edit.html:24
+msgid "Capacity :"
+msgstr ""
+
+#: templates/room/room-edit.html:29 templates/room/rooms.html:45
+msgid "Room Type"
+msgstr ""
+
+#: templates/room/room-edit.html:38
+msgid "Save Changes"
+msgstr ""
+
+#: templates/room/room-profile.html:10
+msgid "Room Number:"
+msgstr ""
+
+#: templates/room/room-profile.html:26
+msgid "Capacity: "
+msgstr ""
+
+#: templates/room/room-profile.html:30
+msgid "Description:"
+msgstr ""
+
+#: templates/room/rooms.html:8
+msgid "Room List"
+msgstr ""
+
+#: templates/room/rooms.html:9
+msgid "Filter available room with time interval"
+msgstr ""
+
+#: templates/room/rooms.html:16
+msgid "First Date"
+msgstr ""
+
+#: templates/room/rooms.html:22
+msgid "Last Date"
+msgstr ""
+
+#: templates/room/rooms.html:28 templates/room/rooms.html:49
+msgid "Filter"
+msgstr ""
+
+#: templates/room/rooms.html:39
+msgid "Room Number"
+msgstr ""
+
+#: templates/room/rooms.html:41
+msgid "Capacity"
+msgstr ""
+
+#: templates/room/rooms.html:43
+msgid "Number of Beds"
+msgstr ""
+
+#: templates/room/rooms.html:47
+msgid "Price"
+msgstr ""
+
+#: templates/room/rooms.html:63
+msgid "View"
+msgstr ""
+
+#: templates/room/rooms.html:69
+msgid "Edit&nbsp;Room"
+msgstr ""
+
+#: templates/room/rooms.html:79
+msgid "Book"
+msgstr ""
+
+#: templates/user/edit-profile.html:14
+msgid "Save"
+msgstr ""
+
+#: templates/user/user-profile.html:10
+msgid "First Name:"
+msgstr ""
+
+#: templates/user/user-profile.html:15
+msgid "Surname:"
+msgstr ""
+
+#: templates/user/user-profile.html:20
+msgid "Email:"
+msgstr ""
+
+#: templates/user/user-profile.html:25
+msgid "Phone Number:"
+msgstr ""
+
+#: templates/user/user-profile.html:30
+msgid "Account Creation Date:"
+msgstr ""
+
+#: templates/user/user-profile.html:35
+msgid "Edit"
 msgstr ""

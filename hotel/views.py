@@ -1,3 +1,5 @@
+from django.db.models import query
+from django.db.models.query import Prefetch
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
@@ -6,11 +8,12 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.utils.translation import ugettext_lazy as _
 from .models import Room, Booking, RoomImage, User
 from .forms import NewUserForm, EditRoomForm, UserForm
 from datetime import datetime, date, timedelta
 import random
-from hotel.utils import constant
+from hotel.utils import constants, comfunc
 
 def user_register(request):
     if request.method == "POST":
@@ -54,8 +57,8 @@ def rooms(request):
             check_in = data.get("fd", "")
             check_out = data.get("ld", "")
             try:
-                check_in = datetime.strptime(check_in, constant.DATE_FORMAT)
-                check_out = datetime.strptime(check_out, constant.DATE_FORMAT)
+                check_in = datetime.strptime(check_in, constants.DATE_FORMAT)
+                check_out = datetime.strptime(check_out, constants.DATE_FORMAT)
             except ValueError:
                 raise ValueError("Incorrect data format, should be YYYY-MM-DD")
             rooms = check_valid(check_in, check_out)
@@ -88,15 +91,39 @@ def rooms(request):
 
 # @login_required(login_url='login')
 def room_profile(request, number):
-    tempRoom = Room.objects.get(id=number)
-    img_urls = RoomImage.objects.filter(room_id= number)
-    bookings = Booking.objects.filter(room_id= tempRoom)
+    room = Room.objects.filter(id = number).prefetch_related("roomimage_set").first()
+    bookings = Booking.objects.filter(room_id= room)
+    if request.user.id is not None:
+        guest = User.objects.filter(id = request.user.id).first()
+        checked = 1
+        if request.method == 'POST':
+            if "make-booking" in request.POST:
+                data = request.POST
+                user = guest
+                room_id = room
+                date = datetime.now()
+                start_date = data.get("fd")
+                end_date = data.get("ld")
+                status = Booking.STATUS_TYPE[0][0]
+                room_price = room.room_price
+                for booking in bookings:
+                    if comfunc.validate_date(request, booking.start_date, booking.end_date, start_date, end_date) == False:
+                        checked = 0
+                        break
+                if(checked == 1):
+                    new_booking = Booking(user = user, room_id = room_id, reservation_date = date, \
+                        start_date= start_date, end_date= end_date, status= status, room_price= room_price)
+                    new_booking.save()
+                    messages.success(request, _("Success"))
+                    context = {
+                        "bookings": Booking.objects.filter(room_id= room),
+                        "room": room,
+                    }
+                    return render(request,"room/room-profile.html", context)
     context = {
         "bookings": bookings,
-        "room": tempRoom,
-        "img_urls": img_urls
+        "room": room,
     }
-
     return render(request,"room/room-profile.html", context)
 
 @login_required(login_url='login')
@@ -143,14 +170,6 @@ def room_add(request):
             return redirect('rooms')
     context = {'message': message, 'room_types': type_arr}
     return render(request,'room/room-add.html',context)
-
-# booking functions (make booking, list booking)
-
-def make_booking(request):
-    pass
-
-def list_booking(request):
-    pass
 
 # user profile
 class UserProfileView(LoginRequiredMixin, generic.DetailView):

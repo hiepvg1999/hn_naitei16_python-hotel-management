@@ -43,7 +43,7 @@ class Booking(models.Model):
         help_text='Unique ID for this particular booking')
     user = models.ForeignKey(User, null= True, on_delete=models.RESTRICT) # user_id
     room_id = models.ForeignKey(Room, null= True, on_delete=models.RESTRICT) # room_id
-    dateOfReservation = models.DateField(default=timezone.now)
+    reservation_date = models.DateField(default=timezone.now)
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.CharField(max_length=20, choices= STATUS_TYPE)

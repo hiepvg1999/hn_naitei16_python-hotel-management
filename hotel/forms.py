@@ -1,10 +1,11 @@
 from django import forms
+from django.db.models import fields
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from phonenumber_field.modelfields import PhoneNumberField
-from .models import User, Room
+from .models import Booking, User, Room
 
 class NewUserForm(UserCreationForm):
     username = forms.CharField(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-18 09:40+0700\n"
+"POT-Creation-Date: 2021-08-18 13:14+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:11
+#: forms.py:12
 msgid "User Name"
 msgstr ""
 
-#: forms.py:15
+#: forms.py:16
 msgid "First Name"
 msgstr ""
 
-#: forms.py:19
+#: forms.py:20
 msgid "Last Name"
 msgstr ""
 
-#: forms.py:23
+#: forms.py:24
 msgid "Email"
 msgstr ""
 
-#: forms.py:28
+#: forms.py:29
 msgid "Password"
 msgstr ""
 
-#: forms.py:33
+#: forms.py:34
 msgid "Conrfirm Password"
 msgstr ""
 
-#: forms.py:44
+#: forms.py:45
 msgid "Username is already in use."
 msgstr ""
 
@@ -169,20 +169,28 @@ msgstr ""
 msgid "Description:"
 msgstr ""
 
+#: templates/room/room-profile.html:45 templates/room/rooms.html:16
+msgid "First Date"
+msgstr ""
+
+#: templates/room/room-profile.html:51 templates/room/rooms.html:22
+msgid "Last Date"
+msgstr ""
+
+#: templates/room/room-profile.html:57
+msgid "Book"
+msgstr ""
+
+#: templates/room/room-profile.html:64
+msgid "Booking:"
+msgstr ""
+
 #: templates/room/rooms.html:8
 msgid "Room List"
 msgstr ""
 
 #: templates/room/rooms.html:9
 msgid "Filter available room with time interval"
-msgstr ""
-
-#: templates/room/rooms.html:16
-msgid "First Date"
-msgstr ""
-
-#: templates/room/rooms.html:22
-msgid "Last Date"
 msgstr ""
 
 #: templates/room/rooms.html:28 templates/room/rooms.html:49
@@ -213,10 +221,6 @@ msgstr ""
 msgid "Edit&nbsp;Room"
 msgstr ""
 
-#: templates/room/rooms.html:79
-msgid "Book"
-msgstr ""
-
 #: templates/user/edit-profile.html:14
 msgid "Save"
 msgstr ""
@@ -243,4 +247,32 @@ msgstr ""
 
 #: templates/user/user-profile.html:35
 msgid "Edit"
+msgstr ""
+
+#: templates/user/user-profile.html:40
+msgid "Booking List:"
+msgstr ""
+
+#: utils/comfunc.py:10
+msgid "Start date and End date >= now"
+msgstr ""
+
+#: utils/comfunc.py:14
+msgid "End date >= Start date"
+msgstr ""
+
+#: utils/comfunc.py:18
+msgid "Start date has been booked"
+msgstr ""
+
+#: utils/comfunc.py:21
+msgid "End date has been booked"
+msgstr ""
+
+#: utils/comfunc.py:24
+msgid "The date has been booked"
+msgstr ""
+
+#: views.py:114
+msgid "Success"
 msgstr ""

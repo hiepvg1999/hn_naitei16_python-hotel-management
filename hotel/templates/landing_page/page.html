@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load static %}
+<img class="image" src="{% static 'image/common/hotel.jpg' %}" alt="The Hotel" style="width:100%;">
+<div class="content">
+    <div class="row mt-5" id= "room">
+        <div class="col-6">
+            {% include 'landing_page/slider.html' %}
+        </div>
+        <div class="col-6">
+            <h3>{% trans "Rooms" %}</h3>
+            <p>{% trans "Make yourself at home is our slogan. We offer the best beds in the industry. Sleep well and rest well." %}</p>
+            <br>
+            <a href="{% url 'rooms' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{% trans "Booking now" %}</a>
+        </div>
+    </div>
+    <div class="row mt-5" id="about">
+        <div class="col-4">
+            <h3>{% trans "About" %}</h3>
+            <h6>{% trans "Our hotel is one of a kind. It is truely amazing." %}</h6>
+            <p>{% trans "We accept: " %}<i class="fa fa-credit-card btn-lg"></i> <i class="fa fa-cc-mastercard btn-lg"></i> <i class="fa fa-cc-amex btn-lg"></i> <i class="fa fa-cc-paypal btn-lg"></i></p>
+        </div>
+        <div class="col-8">
+        <!-- Image of location/map -->
+        <img src="{% static 'image/common/map.jpg' %}" class="image" style="width:100%;">
+        </div>
+  </div>
+</div>

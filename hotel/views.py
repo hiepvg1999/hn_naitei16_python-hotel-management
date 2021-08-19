@@ -28,7 +28,7 @@ def user_register(request):
     return render (request=request, template_name="registration/register.html", context={"form":form})
 
 def index(request):
-    return render (request=request, template_name="index.html")
+    return render (request=request, template_name="home.html")
 
 # @login_required(login_url='login')
 # room function (add, edit, filter)
@@ -175,7 +175,7 @@ def room_add(request):
 class UserProfileView(LoginRequiredMixin, generic.DetailView):
     model = User
     template_name = 'user/user-profile.html'
-    
+
     def get_object(self):
         return self.request.user
 

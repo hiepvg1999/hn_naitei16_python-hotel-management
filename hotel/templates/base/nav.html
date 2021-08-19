@@ -1,7 +1,7 @@
 {% load i18n %}
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 ">
     <div class="container">
-        <a href="" class="navbar-brand">
+        <a href="{% url 'index' %}" class="navbar-brand btn">
             <h2 class="text-capitalize">
                 {% if user.is_authenticated %}
                     <a href="{% url 'user-profile' %}">{{ user.username }}</a>-

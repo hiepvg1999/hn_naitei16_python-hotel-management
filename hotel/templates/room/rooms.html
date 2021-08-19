@@ -70,15 +70,6 @@
                     </a>
                 </td>
                 {% endif %}
-                <td>
-                    <form action="#" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" value="{{ room }}" name="roomid">
-                        <input type="date" value="{{fd}}" name="fd" class="d-none">
-                        <input type="date" value="{{ld}}" name="ld" class="d-none">
-                        <button type="submit" name="book" id="book" class="btn btn-sm btn-primary px-3">{% trans "Book" %} </button>
-                    </form>
-                </td>
             </tr>
             {% endfor %}
         </tbody>

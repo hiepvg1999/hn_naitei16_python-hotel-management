@@ -5,7 +5,7 @@
 <div class="container">
     <div class="shadow-lg p-5">
         <div class="row mt-5">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="p-2 h4">
                     <span>{% trans "Room Number:" %}</span>
                     <span class="font-weight-normal">{{room.id}}</span>
@@ -31,12 +31,47 @@
                     <span class="font-weight-normal">{{room.description}}</span>
                 </div>
                 <div class="image">
-                    {%for url in img_urls%}
+                    {%for url in room.roomimage_set.all%}
                         <div class="col-4">
                             <img src="{% static url %}" />
                         </div>
                     {% endfor %}
                 </div>
+                {% if user.is_authenticated %}
+                    <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <label for="example-date-input" class="col-form-label">{% trans "First Date" %}</label>
+                                    <div class="">
+                                        <input class="form-control" type="date" name="fd" value="{{fd}}" id="example-date-input" required>
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="example-date-input" class="col-form-label">{% trans "Last Date" %}</label>
+                                    <div class="">
+                                        <input class="form-control" type="date" name="ld" value="{{ld}}" id="example-date-input" required>
+                                    </div>
+                                </div>
+                                <div class="col-4" style="margin-top:38px;">
+                                    <button type="submit" name="make-booking" class="btn btn-success float-right">{% trans 'Book' %}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <div class='col-12'>
+                <h4>{% trans 'Booking:' %}</h4>
+                {% for book in bookings %}
+                    {% if book.status == "approved" %}
+                        <hr>
+                        <span class="ml-5 mr-5 pl-5">{{book.user}}</span>
+                        <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
+                        <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

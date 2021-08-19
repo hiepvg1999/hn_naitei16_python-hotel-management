@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
 import environ
@@ -127,6 +128,14 @@ LANGUAGES = (
     ('en-us', _('English')),
     ('vi', _('Vietnamese')),
 )
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 TIME_ZONE = 'UTC'
 

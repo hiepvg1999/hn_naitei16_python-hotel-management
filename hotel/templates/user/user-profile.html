@@ -36,6 +36,15 @@
                     </a>
                 {% endif %}
             </div>
+            <div class="col-12">
+                <h4>{% trans 'Booking List:' %}</h4>
+                {% for book in user.booking_set.all %}
+                    <hr>
+                    <span class="ml-5 mr-5 pl-5">{{book.room_id}}</span>
+                    <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
+                    <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

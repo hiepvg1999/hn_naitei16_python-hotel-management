@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-18 13:14+0700\n"
+"POT-Creation-Date: 2021-08-19 20:59+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,262 +17,337 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:12
+#: hotel/forms.py:12
 msgid "User Name"
 msgstr "Tên tài khoản"
 
-#: forms.py:16
+#: hotel/forms.py:16
 msgid "First Name"
 msgstr "Tên"
 
-#: forms.py:20
+#: hotel/forms.py:20
 msgid "Last Name"
 msgstr "Họ"
 
-#: forms.py:24
+#: hotel/forms.py:24
 msgid "Email"
 msgstr ""
 
-#: forms.py:29
+#: hotel/forms.py:29
 msgid "Password"
 msgstr "Mật khẩu"
 
-#: forms.py:34
+#: hotel/forms.py:34
 msgid "Conrfirm Password"
 msgstr "Xác nhận mật khẩu"
 
-#: forms.py:45
+#: hotel/forms.py:45
 msgid "Username is already in use."
 msgstr "Tên đăng nhập đã tồn tại"
 
-#: models.py:12
+#: hotel/models.py:12
 msgid "email address"
 msgstr "Địa chỉ email"
 
-#: templates/base/footer.html:5
+#: hotel/templates/base/footer.html:5
 msgid "Hotel Management System - IT Training 2021 ©"
 msgstr "Hệ Thống Quản Lý Khách Sạn - IT Training 2021 ©"
 
-#: templates/base/nav.html:9
+#: hotel/templates/base/nav.html:9
 msgid "Admin"
 msgstr ""
 
-#: templates/base/nav.html:11
+#: hotel/templates/base/nav.html:11
 msgid "Guest"
 msgstr "Khách"
 
-#: templates/base/nav.html:14
+#: hotel/templates/base/nav.html:14
 msgid "Welcome to our hotel"
 msgstr "Chào mừng đến với khách sạn của chúng tôi"
 
-#: templates/base/nav.html:26
+#: hotel/templates/base/nav.html:26
 msgid "Options"
 msgstr "Lựa chọn"
 
-#: templates/base/nav.html:31
+#: hotel/templates/base/nav.html:31 hotel/templates/landing_page/page.html:10
 msgid "Rooms"
 msgstr "Danh sách phòng"
 
-#: templates/base/nav.html:32
+#: hotel/templates/base/nav.html:32
 msgid "Add room"
 msgstr "Tạo phòng"
 
-#: templates/base/nav.html:34 templates/base/nav.html:37
+#: hotel/templates/base/nav.html:34 hotel/templates/base/nav.html:37
 msgid "Room"
 msgstr "Phòng"
 
-#: templates/base/nav.html:43
+#: hotel/templates/base/nav.html:43
 msgid "Log Out"
 msgstr "Đăng xuất"
 
-#: templates/base/nav.html:47
+#: hotel/templates/base/nav.html:47
 msgid "Log In"
 msgstr "Đăng nhập"
 
-#: templates/index.html:8
+#: hotel/templates/home.html:8 hotel/templates/index.html:8
 msgid "Hotel Management System"
 msgstr "Hệ Thống Quản Lý Khách Sạn"
 
-#: templates/registration/login.html:3
+#: hotel/templates/landing_page/page.html:11
+msgid ""
+"Make yourself at home is our slogan. We offer the best beds in the industry. "
+"Sleep well and rest well."
+msgstr ""
+"Làm cho bạn như ở nhà là khẩu hiệu của chúng tôi. Chúng tôi cung cấp những "
+"chiếc giường tốt nhất trong ngành.Ngủ ngon và nghỉ ngơi thật tốt."
+
+#: hotel/templates/landing_page/page.html:13
+#, fuzzy
+#| msgid "Booking:"
+msgid "Booking now"
+msgstr "Danh sách đặt phòng"
+
+#: hotel/templates/landing_page/page.html:18
+msgid "About"
+msgstr ""
+
+#: hotel/templates/landing_page/page.html:19
+msgid "Our hotel is one of a kind. It is truely amazing."
+msgstr "Khách sạn của chúng tôi là một trong những loại. Nó thực sự tuyệt vời."
+
+#: hotel/templates/landing_page/page.html:20
+msgid "We accept: "
+msgstr "Chúng tôi chấp nhận :"
+
+#: hotel/templates/landing_page/slider.html:14
+msgid "King room"
+msgstr "Phòng rất sang trọng"
+
+#: hotel/templates/landing_page/slider.html:15
+msgid "This is king room"
+msgstr "Đây là phòng rất sang trọng"
+
+#: hotel/templates/landing_page/slider.html:21
+msgid "Luxury room"
+msgstr "Phòng sang trọng"
+
+#: hotel/templates/landing_page/slider.html:22
+msgid "This is luxury room"
+msgstr "Đây là phòng sang trọng"
+
+#: hotel/templates/landing_page/slider.html:28
+msgid "Normal room"
+msgstr "Phòng bình thường"
+
+#: hotel/templates/landing_page/slider.html:29
+msgid "This is normal room"
+msgstr "Đây là phòng bình thường"
+
+#: hotel/templates/landing_page/slider.html:35
+msgid "Economic room"
+msgstr "Phòng rẻ"
+
+#: hotel/templates/landing_page/slider.html:36
+msgid "This is economic room"
+msgstr "Đây là phòng rẻ"
+
+#: hotel/templates/landing_page/slider.html:42
+msgid "Previous"
+msgstr "Trước đó"
+
+#: hotel/templates/landing_page/slider.html:46
+msgid "Next"
+msgstr "Tiếp theo"
+
+#: hotel/templates/registration/login.html:3
 msgid "Your username and password didn't match. Please try again."
 msgstr "Tên đăng nhập và mật khẩu không khớp!"
 
-#: templates/registration/login.html:8
+#: hotel/templates/registration/login.html:8
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access."
 msgstr "Tài khoản của bạn không có quyền truy cập trang này"
 
-#: templates/registration/login.html:10
+#: hotel/templates/registration/login.html:10
 msgid "Please login to see this page."
 msgstr "Hãy đăng nhập để xem trang này"
 
-#: templates/registration/login.html:26
+#: hotel/templates/registration/login.html:26
 msgid "Login"
 msgstr "Đăng nhập"
 
-#: templates/registration/login.html:31
+#: hotel/templates/registration/login.html:31
 msgid "Lost password?"
 msgstr "Quên mật khẩu?"
 
-#: templates/registration/register.html:2
+#: hotel/templates/registration/register.html:2
 msgid "Register"
 msgstr "Đăng kí"
 
-#: templates/registration/register.html:8
+#: hotel/templates/registration/register.html:8
 msgid "Submit"
 msgstr "Xác nhận"
 
-#: templates/room/room-add.html:14 templates/room/room-edit.html:12
-#: templates/room/room-profile.html:14
+#: hotel/templates/room/room-add.html:14 hotel/templates/room/room-edit.html:12
+#: hotel/templates/room/room-profile.html:14
 msgid "Number Of Beds:"
 msgstr "Số giường:"
 
-#: templates/room/room-add.html:19 templates/room/room-edit.html:17
-#: templates/room/room-profile.html:18
+#: hotel/templates/room/room-add.html:19 hotel/templates/room/room-edit.html:17
+#: hotel/templates/room/room-profile.html:18
 msgid "Price:"
 msgstr "Giá:"
 
-#: templates/room/room-add.html:26
+#: hotel/templates/room/room-add.html:26
 msgid "Capacity:"
 msgstr "Sức chứa:"
 
-#: templates/room/room-add.html:32 templates/room/room-profile.html:22
+#: hotel/templates/room/room-add.html:32
+#: hotel/templates/room/room-profile.html:22
 msgid "Room Type:"
 msgstr "Loại phòng:"
 
-#: templates/room/room-add.html:44
+#: hotel/templates/room/room-add.html:44
 msgid "Add Room"
 msgstr "Tạo phòng"
 
-#: templates/room/room-edit.html:24
+#: hotel/templates/room/room-edit.html:24
 msgid "Capacity :"
 msgstr "Sức chứa:"
 
-#: templates/room/room-edit.html:29 templates/room/rooms.html:45
+#: hotel/templates/room/room-edit.html:29 hotel/templates/room/rooms.html:45
 msgid "Room Type"
 msgstr "Loại phòng"
 
-#: templates/room/room-edit.html:38
+#: hotel/templates/room/room-edit.html:38
 msgid "Save Changes"
 msgstr "Lưu"
 
-#: templates/room/room-profile.html:10
+#: hotel/templates/room/room-profile.html:10
 msgid "Room Number:"
 msgstr "Phòng số:"
 
-#: templates/room/room-profile.html:26
+#: hotel/templates/room/room-profile.html:26
 msgid "Capacity: "
 msgstr "Sức chứa:"
 
-#: templates/room/room-profile.html:30
+#: hotel/templates/room/room-profile.html:30
 msgid "Description:"
 msgstr "Mô tả:"
 
-#: templates/room/room-profile.html:45 templates/room/rooms.html:16
+#: hotel/templates/room/room-profile.html:46 hotel/templates/room/rooms.html:16
 msgid "First Date"
 msgstr "Ngày bắt đầu"
 
-#: templates/room/room-profile.html:51 templates/room/rooms.html:22
+#: hotel/templates/room/room-profile.html:52 hotel/templates/room/rooms.html:22
 msgid "Last Date"
 msgstr "Ngày cuối"
 
-#: templates/room/room-profile.html:57
+#: hotel/templates/room/room-profile.html:58
 msgid "Book"
 msgstr "Đặt phòng"
 
-#: templates/room/room-profile.html:64
+#: hotel/templates/room/room-profile.html:66
 msgid "Booking:"
 msgstr "Danh sách đặt phòng"
 
-#: templates/room/rooms.html:8
+#: hotel/templates/room/rooms.html:8
 msgid "Room List"
 msgstr "Danh sách phòng"
 
-#: templates/room/rooms.html:9
+#: hotel/templates/room/rooms.html:9
 msgid "Filter available room with time interval"
 msgstr "Lọc bằng thời gian"
 
-#: templates/room/rooms.html:28 templates/room/rooms.html:49
+#: hotel/templates/room/rooms.html:28 hotel/templates/room/rooms.html:49
 msgid "Filter"
 msgstr "Lọc"
 
-#: templates/room/rooms.html:39
+#: hotel/templates/room/rooms.html:39
 msgid "Room Number"
 msgstr "Phòng số"
 
-#: templates/room/rooms.html:41
+#: hotel/templates/room/rooms.html:41
 msgid "Capacity"
 msgstr "Sức chứa"
 
-#: templates/room/rooms.html:43
+#: hotel/templates/room/rooms.html:43
 msgid "Number of Beds"
 msgstr "Số giường"
 
-#: templates/room/rooms.html:47
+#: hotel/templates/room/rooms.html:47
 msgid "Price"
 msgstr "Giá"
 
-#: templates/room/rooms.html:63
+#: hotel/templates/room/rooms.html:63
 msgid "View"
 msgstr "Xem"
 
-#: templates/room/rooms.html:69
+#: hotel/templates/room/rooms.html:69
 msgid "Edit&nbsp;Room"
 msgstr "Chỉnh sửa"
 
-#: templates/user/edit-profile.html:14
+#: hotel/templates/user/edit-profile.html:14
 msgid "Save"
 msgstr "Lưu"
 
-#: templates/user/user-profile.html:10
+#: hotel/templates/user/user-profile.html:10
 msgid "First Name:"
 msgstr "Tên:"
 
-#: templates/user/user-profile.html:15
+#: hotel/templates/user/user-profile.html:15
 msgid "Surname:"
 msgstr "Họ:"
 
-#: templates/user/user-profile.html:20
+#: hotel/templates/user/user-profile.html:20
 msgid "Email:"
 msgstr ""
 
-#: templates/user/user-profile.html:25
+#: hotel/templates/user/user-profile.html:25
 msgid "Phone Number:"
 msgstr "Số điện thoại:"
 
-#: templates/user/user-profile.html:30
+#: hotel/templates/user/user-profile.html:30
 msgid "Account Creation Date:"
 msgstr "Thời gian tạo tài khoản:"
 
-#: templates/user/user-profile.html:35
+#: hotel/templates/user/user-profile.html:35
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
-#: templates/user/user-profile.html:40
+#: hotel/templates/user/user-profile.html:40
 msgid "Booking List:"
 msgstr "Danh sách phòng đã đặt:"
 
-#: utils/comfunc.py:10
+#: hotel/utils/comfunc.py:11
 msgid "Start date and End date >= now"
 msgstr "Thời gian phải lớn hơn thời điểm hiện tại"
 
-#: utils/comfunc.py:14
+#: hotel/utils/comfunc.py:15
 msgid "End date >= Start date"
 msgstr "Ngày cuối > Ngày bắt đầu"
 
-#: utils/comfunc.py:18
+#: hotel/utils/comfunc.py:19
 msgid "Start date has been booked"
 msgstr "Ngày bắt đầu đã bị trùng"
 
-#: utils/comfunc.py:21
+#: hotel/utils/comfunc.py:22
 msgid "End date has been booked"
 msgstr "Ngày cuối đã bị trùng"
 
-#: utils/comfunc.py:24
+#: hotel/utils/comfunc.py:25
 msgid "The date has been booked"
 msgstr "Ngày đã bị trùng"
 
-#: views.py:114
+#: hotel/views.py:117
 msgid "Success"
 msgstr "Đặt phòng thành công"
+
+#: hotel_management/settings.py:128
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: hotel_management/settings.py:129
+msgid "Vietnamese"
+msgstr "Tiếng Việt"

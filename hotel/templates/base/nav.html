@@ -20,6 +20,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTags">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item p-2 ">
+                    <a href="{% url 'index' %}" class="nav-link">{% trans "Home" %}</a>
+                </li>
                 <li class="nav-item dropdown p-2">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +33,7 @@
                             {% if user.is_staff %}
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Rooms" %}</a>
                                 <a class="dropdown-item" href="{% url 'room-add' %}">{% trans "Add room" %}</a>
+                                <a class="dropdown-item" href="{% url 'list-users' %}">{% trans "List users" %}</a>
                             {% else %}
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Room" %}</a>
                             {% endif %}

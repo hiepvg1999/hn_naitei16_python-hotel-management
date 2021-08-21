@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-19 20:59+0700\n"
+"POT-Creation-Date: 2021-08-23 11:35+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Hệ Thống Quản Lý Khách Sạn - IT Training 2021 ©"
 
 #: hotel/templates/base/nav.html:9
 msgid "Admin"
-msgstr ""
+msgstr "Quản trị viên"
 
 #: hotel/templates/base/nav.html:11
 msgid "Guest"
@@ -65,31 +65,39 @@ msgstr "Khách"
 msgid "Welcome to our hotel"
 msgstr "Chào mừng đến với khách sạn của chúng tôi"
 
-#: hotel/templates/base/nav.html:26
+#: hotel/templates/base/nav.html:24
+msgid "Home"
+msgstr "Trang chủ"
+
+#: hotel/templates/base/nav.html:29
 msgid "Options"
 msgstr "Lựa chọn"
 
-#: hotel/templates/base/nav.html:31 hotel/templates/landing_page/page.html:10
+#: hotel/templates/base/nav.html:34 hotel/templates/landing_page/page.html:10
 msgid "Rooms"
 msgstr "Danh sách phòng"
 
-#: hotel/templates/base/nav.html:32
+#: hotel/templates/base/nav.html:35
 msgid "Add room"
 msgstr "Tạo phòng"
 
-#: hotel/templates/base/nav.html:34 hotel/templates/base/nav.html:37
+#: hotel/templates/base/nav.html:36
+msgid "List users"
+msgstr "Danh sách người dùng"
+
+#: hotel/templates/base/nav.html:38 hotel/templates/base/nav.html:41
 msgid "Room"
 msgstr "Phòng"
 
-#: hotel/templates/base/nav.html:43
+#: hotel/templates/base/nav.html:47
 msgid "Log Out"
 msgstr "Đăng xuất"
 
-#: hotel/templates/base/nav.html:47
+#: hotel/templates/base/nav.html:51
 msgid "Log In"
 msgstr "Đăng nhập"
 
-#: hotel/templates/home.html:8 hotel/templates/index.html:8
+#: hotel/templates/index.html:8
 msgid "Hotel Management System"
 msgstr "Hệ Thống Quản Lý Khách Sạn"
 
@@ -109,7 +117,7 @@ msgstr "Danh sách đặt phòng"
 
 #: hotel/templates/landing_page/page.html:18
 msgid "About"
-msgstr ""
+msgstr "Về chúng tôi"
 
 #: hotel/templates/landing_page/page.html:19
 msgid "Our hotel is one of a kind. It is truely amazing."
@@ -292,33 +300,48 @@ msgstr "Chỉnh sửa"
 msgid "Save"
 msgstr "Lưu"
 
+#: hotel/templates/user/list-users.html:11
+#: hotel/templates/user/list-users.html:12
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: hotel/templates/user/list-users.html:22
 #: hotel/templates/user/user-profile.html:10
 msgid "First Name:"
 msgstr "Tên:"
 
+#: hotel/templates/user/list-users.html:27
 #: hotel/templates/user/user-profile.html:15
 msgid "Surname:"
 msgstr "Họ:"
 
+#: hotel/templates/user/list-users.html:32
 #: hotel/templates/user/user-profile.html:20
 msgid "Email:"
 msgstr ""
 
+#: hotel/templates/user/list-users.html:37
 #: hotel/templates/user/user-profile.html:25
 msgid "Phone Number:"
 msgstr "Số điện thoại:"
 
+#: hotel/templates/user/list-users.html:42
 #: hotel/templates/user/user-profile.html:30
 msgid "Account Creation Date:"
 msgstr "Thời gian tạo tài khoản:"
 
-#: hotel/templates/user/user-profile.html:35
-msgid "Edit"
-msgstr "Chỉnh sửa"
-
+#: hotel/templates/user/list-users.html:47
 #: hotel/templates/user/user-profile.html:40
 msgid "Booking List:"
 msgstr "Danh sách phòng đã đặt:"
+
+#: hotel/templates/user/list-users.html:60
+msgid "No users found with the phrase"
+msgstr "Không tìm thấy người dùng nào với cụm từ "
+
+#: hotel/templates/user/user-profile.html:35
+msgid "Edit"
+msgstr "Chỉnh sửa"
 
 #: hotel/utils/comfunc.py:11
 msgid "Start date and End date >= now"
@@ -340,7 +363,7 @@ msgstr "Ngày cuối đã bị trùng"
 msgid "The date has been booked"
 msgstr "Ngày đã bị trùng"
 
-#: hotel/views.py:117
+#: hotel/views.py:118
 msgid "Success"
 msgstr "Đặt phòng thành công"
 
@@ -351,3 +374,8 @@ msgstr "Tiếng Anh"
 #: hotel_management/settings.py:129
 msgid "Vietnamese"
 msgstr "Tiếng Việt"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "Search user"
+#~ msgstr "Tìm kiếm"

@@ -205,3 +205,12 @@ def list_users(request):
         else:
             context = {'users': users}
         return render(request,'user/list-users.html',context)
+ 
+@login_required
+@permission_required('hotel.staff_booking_list', raise_exception=True)
+def list_bookings_staff(request):
+    bookings = Booking.objects.filter(status = constants.WAITING)
+    context = {
+        "bookings": bookings
+    }
+    return render(request, 'user/staff-list-bookings.html', context)

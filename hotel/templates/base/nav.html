@@ -31,10 +31,13 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% if user.is_authenticated %}
                             {% if user.is_staff %}
+                                <a class="dropdown-item" href="{% url 'user-profile' %}">{% trans "Profile" %}</a>
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Rooms" %}</a>
                                 <a class="dropdown-item" href="{% url 'room-add' %}">{% trans "Add room" %}</a>
                                 <a class="dropdown-item" href="{% url 'list-users' %}">{% trans "List users" %}</a>
+                                <a class="dropdown-item" href="{% url 'list-bookings-staff' %}">{% trans "List bookings" %}</a>
                             {% else %}
+                                <a class="dropdown-item" href="{% url 'user-profile' %}">{% trans "Profile" %}</a>
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Room" %}</a>
                             {% endif %}
                         {% else %}

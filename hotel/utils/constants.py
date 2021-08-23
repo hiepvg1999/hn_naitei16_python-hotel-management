@@ -1,1 +1,5 @@
 DATE_FORMAT = "%Y-%m-%d"
+WAITING = "waiting"
+APPROVED = "approved"
+REJECTED = "rejected"
+CANCEL = "cancelled"

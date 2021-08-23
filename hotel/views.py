@@ -1,4 +1,5 @@
 from django.db.models import query
+from django.db.models import Q
 from django.db.models.query import Prefetch
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -14,7 +15,6 @@ from .forms import NewUserForm, EditRoomForm, UserForm
 from datetime import datetime, date, timedelta
 import random
 from hotel.utils import constants, comfunc
-
 def user_register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -30,7 +30,7 @@ def user_register(request):
 def index(request):
     return render (request=request, template_name="home.html")
 
-# @login_required(login_url='login')
+# @login_required
 # room function (add, edit, filter)
 def rooms(request):
     rooms = Room.objects.all()
@@ -89,7 +89,7 @@ def rooms(request):
     }
     return render(request, 'room/rooms.html', context)
 
-# @login_required(login_url='login')
+# @login_required
 def room_profile(request, number):
     room = Room.objects.filter(id = number).prefetch_related("roomimage_set").first()
     bookings = Booking.objects.filter(room_id= room)
@@ -126,7 +126,7 @@ def room_profile(request, number):
     }
     return render(request,"room/room-profile.html", context)
 
-@login_required(login_url='login')
+@login_required
 @permission_required('hotel.can_edit', raise_exception=True)
 def room_edit(request, number):
     room = Room.objects.get(id= number)
@@ -148,7 +148,7 @@ def room_edit(request, number):
             return redirect("room-profile", number = room.id)
     return render(request, "room/room-edit.html", context)
 
-@login_required(login_url='login')
+@login_required
 @permission_required('hotel.can_add', raise_exception=True)
 def room_add(request):
     room_types = Room.ROOM_TYPES
@@ -179,7 +179,7 @@ class UserProfileView(LoginRequiredMixin, generic.DetailView):
     def get_object(self):
         return self.request.user
 
-@login_required(login_url='login')
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = UserForm(request.POST, instance=request.user)
@@ -189,3 +189,19 @@ def edit_profile(request):
     else:
         form = UserForm(instance=request.user)
     return render(request, 'user/edit-profile.html', {'form': form})
+
+@login_required
+def list_users(request):
+    users = User.objects.all()
+    if request.method == 'GET':
+        user_search = request.GET.get('search' or None)
+        if user_search is not None:
+            user_search = user_search.strip()
+            if user_search != '':
+                user_s = User.objects.filter(Q(email__icontains= user_search) | Q(phoneNumber__icontains= user_search)).first()
+                context = {'user_search': user_s, 'search_str': user_search}
+            else:
+                context = {'users': users}
+        else:
+            context = {'users': users}
+        return render(request,'user/list-users.html',context)

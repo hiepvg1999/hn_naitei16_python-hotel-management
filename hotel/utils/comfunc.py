@@ -10,7 +10,7 @@ def validate_date(request, start, end, bookStart, bookEnd):
     if now > bookStart or now > bookEnd:
         messages.error(request, _("Start date and End date >= now"))
         return False
-    else: 
+    else:
         if bookStart > bookEnd:
             messages.error(request, _("End date >= Start date"))
             return False

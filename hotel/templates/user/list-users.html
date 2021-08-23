@@ -1,0 +1,71 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
+{% load i18n %}
+<div class="container">
+    <br>
+    <div class="d-flex justify-content-center">
+        {% if user.is_staff %}
+        <form class="form-inline my-2 my-lg-0" method= "GET" action="{% url 'list-users' %}">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="{% trans 'Search' %}" aria-label="Search" name="search" value= "{{search_str}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+        </form>
+        {% endif %}
+    </div>
+    <br>
+    {% if user_search %}
+        <div class="shadow-lg p-5">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="p-2 h4">
+                        <span>{% trans 'First Name:'%}</span>
+                        <span class="font-weight-normal">{{user_search.first_name}} </span>
+                    </div>
+
+                    <div class="p-2 h4">
+                        <span>{% trans 'Surname:' %}</span>
+                        <span class="font-weight-normal"> {{user_search.last_name}}</span>
+                    </div>
+
+                    <div class="p-2 h4">
+                        <span>{% trans 'Email:' %}</span>
+                        <span class="font-weight-normal">{{user_search.email}}</span>
+                    </div>
+
+                    <div class="p-2 h4">
+                        <span>{% trans 'Phone Number:' %}</span>
+                        <span class="font-weight-normal">{{user_search.phoneNumber}}</span>
+                    </div>
+
+                    <div class="p-2 h4">
+                        <span>{% trans 'Account Creation Date:' %}</span>
+                        <span class="font-weight-normal">{{user_search.date_joined}}</span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h4>{% trans 'Booking List:' %}</h4>
+                    {% for book in user_search.booking_set.all %}
+                        <hr>
+                        <span class="ml-5 mr-5 pl-5">{{book.room_id}}</span>
+                        <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
+                        <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {% if search_str %}
+            <div class="text">
+                <h3 class="text-warning">{% trans "No users found with the phrase" %} {{ search_str }}</h3>
+            </div>
+        {% else %}
+            <ul class="ml-auto">
+                {% for u in users %}
+                    <li class="p-2">{{u.email}} - {{u.phoneNumber}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -210,6 +210,33 @@ def list_users(request):
 @permission_required('hotel.staff_booking_list', raise_exception=True)
 def list_bookings_staff(request):
     bookings = Booking.objects.filter(status = constants.WAITING)
+    if request.method == "GET": 
+        data_g = request.GET
+        room = data_g.get('room')
+        user = data_g.get('user')
+        if 'filter' in data_g:
+            if room == '' and user == '':
+                tmp = bookings
+            elif room != '' and user == '':
+                tmp = bookings.filter(room_id = room)
+            elif user != '' and room == '':
+                tmp = bookings.filter(user__username__icontains = user)
+            else:
+                tmp = bookings.filter(Q(room_id = room), Q(user__username__icontains = user))
+            context = {
+                "bookings": tmp,
+                "room_id": room,
+                "username": user
+            }
+            return render(request, 'user/staff-list-bookings.html', context)
+    elif request.method == "POST":
+        data_p = request.POST
+        booking_id = data_p.get('booking')
+        if 'accept' in data_p:
+            bookings.filter(pk = booking_id).update(status = constants.APPROVED)
+        if 'decline' in data_p:
+            bookings.filter(pk = booking_id).update(status = constants.REJECTED)
+    bookings = Booking.objects.filter(status = constants.WAITING)
     context = {
         "bookings": bookings
     }

@@ -34,3 +34,11 @@ nav .nav-item {
 .image_landing_page {
     width: 100%;
 }
+
+.link_profile:link{
+    text-decoration: none;
+}
+
+.card_item {
+    max-width: 18rem;
+}

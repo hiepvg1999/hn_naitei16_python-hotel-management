@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-18 13:14+0700\n"
+"POT-Creation-Date: 2021-08-23 19:54+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,32 +65,110 @@ msgstr ""
 msgid "Welcome to our hotel"
 msgstr ""
 
-#: templates/base/nav.html:26
+#: templates/base/nav.html:24
+msgid "Home"
+msgstr ""
+
+#: templates/base/nav.html:29
 msgid "Options"
 msgstr ""
 
-#: templates/base/nav.html:31
+#: templates/base/nav.html:34 templates/base/nav.html:40
+msgid "Profile"
+msgstr ""
+
+#: templates/base/nav.html:35 templates/landing_page/page.html:10
 msgid "Rooms"
 msgstr ""
 
-#: templates/base/nav.html:32
+#: templates/base/nav.html:36
 msgid "Add room"
 msgstr ""
 
-#: templates/base/nav.html:34 templates/base/nav.html:37
+#: templates/base/nav.html:37
+msgid "List users"
+msgstr ""
+
+#: templates/base/nav.html:38
+msgid "List bookings"
+msgstr ""
+
+#: templates/base/nav.html:41 templates/base/nav.html:44
 msgid "Room"
 msgstr ""
 
-#: templates/base/nav.html:43
+#: templates/base/nav.html:50
 msgid "Log Out"
 msgstr ""
 
-#: templates/base/nav.html:47
+#: templates/base/nav.html:54
 msgid "Log In"
 msgstr ""
 
 #: templates/index.html:8
 msgid "Hotel Management System"
+msgstr ""
+
+#: templates/landing_page/page.html:11
+msgid ""
+"Make yourself at home is our slogan. We offer the best beds in the industry. "
+"Sleep well and rest well."
+msgstr ""
+
+#: templates/landing_page/page.html:13
+msgid "Booking now"
+msgstr ""
+
+#: templates/landing_page/page.html:18
+msgid "About"
+msgstr ""
+
+#: templates/landing_page/page.html:19
+msgid "Our hotel is one of a kind. It is truely amazing."
+msgstr ""
+
+#: templates/landing_page/page.html:20
+msgid "We accept: "
+msgstr ""
+
+#: templates/landing_page/slider.html:14
+msgid "King room"
+msgstr ""
+
+#: templates/landing_page/slider.html:15
+msgid "This is king room"
+msgstr ""
+
+#: templates/landing_page/slider.html:21
+msgid "Luxury room"
+msgstr ""
+
+#: templates/landing_page/slider.html:22
+msgid "This is luxury room"
+msgstr ""
+
+#: templates/landing_page/slider.html:28
+msgid "Normal room"
+msgstr ""
+
+#: templates/landing_page/slider.html:29
+msgid "This is normal room"
+msgstr ""
+
+#: templates/landing_page/slider.html:35
+msgid "Economic room"
+msgstr ""
+
+#: templates/landing_page/slider.html:36
+msgid "This is economic room"
+msgstr ""
+
+#: templates/landing_page/slider.html:42
+msgid "Previous"
+msgstr ""
+
+#: templates/landing_page/slider.html:46
+msgid "Next"
 msgstr ""
 
 #: templates/registration/login.html:3
@@ -169,19 +247,19 @@ msgstr ""
 msgid "Description:"
 msgstr ""
 
-#: templates/room/room-profile.html:45 templates/room/rooms.html:16
+#: templates/room/room-profile.html:46 templates/room/rooms.html:16
 msgid "First Date"
 msgstr ""
 
-#: templates/room/room-profile.html:51 templates/room/rooms.html:22
+#: templates/room/room-profile.html:52 templates/room/rooms.html:22
 msgid "Last Date"
 msgstr ""
 
-#: templates/room/room-profile.html:57
+#: templates/room/room-profile.html:58
 msgid "Book"
 msgstr ""
 
-#: templates/room/room-profile.html:64
+#: templates/room/room-profile.html:66
 msgid "Booking:"
 msgstr ""
 
@@ -225,54 +303,95 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: templates/user/user-profile.html:10
+#: templates/user/list-bookings.html:8
+msgid "Booking List For Staff"
+msgstr ""
+
+#: templates/user/list-bookings.html:14
+msgid "Room ID"
+msgstr ""
+
+#: templates/user/list-bookings.html:15
+msgid "User"
+msgstr ""
+
+#: templates/user/list-bookings.html:16
+msgid "Start"
+msgstr ""
+
+#: templates/user/list-bookings.html:17
+msgid "End"
+msgstr ""
+
+#: templates/user/list-bookings.html:18
+msgid "Status"
+msgstr ""
+
+#: templates/user/list-bookings.html:19 templates/user/list-users.html:11
+#: templates/user/list-users.html:12
+msgid "Search"
+msgstr ""
+
+#: templates/user/list-bookings.html:32
+msgid "Accept"
+msgstr ""
+
+#: templates/user/list-bookings.html:37
+msgid "Decline"
+msgstr ""
+
+#: templates/user/list-users.html:22 templates/user/user-profile.html:10
 msgid "First Name:"
 msgstr ""
 
-#: templates/user/user-profile.html:15
+#: templates/user/list-users.html:27 templates/user/user-profile.html:15
 msgid "Surname:"
 msgstr ""
 
-#: templates/user/user-profile.html:20
+#: templates/user/list-users.html:32 templates/user/user-profile.html:20
 msgid "Email:"
 msgstr ""
 
-#: templates/user/user-profile.html:25
+#: templates/user/list-users.html:37 templates/user/user-profile.html:25
 msgid "Phone Number:"
 msgstr ""
 
-#: templates/user/user-profile.html:30
+#: templates/user/list-users.html:42 templates/user/user-profile.html:30
 msgid "Account Creation Date:"
+msgstr ""
+
+#: templates/user/list-users.html:47 templates/user/user-profile.html:40
+msgid "Booking List:"
+msgstr ""
+
+#: templates/user/list-users.html:60
+msgid "No users found with the phrase"
 msgstr ""
 
 #: templates/user/user-profile.html:35
 msgid "Edit"
 msgstr ""
 
-#: templates/user/user-profile.html:40
-msgid "Booking List:"
-msgstr ""
-
-#: utils/comfunc.py:10
+#: utils/comfunc.py:11
 msgid "Start date and End date >= now"
 msgstr ""
 
-#: utils/comfunc.py:14
+#: utils/comfunc.py:15
 msgid "End date >= Start date"
 msgstr ""
 
-#: utils/comfunc.py:18
+#: utils/comfunc.py:19
 msgid "Start date has been booked"
 msgstr ""
 
-#: utils/comfunc.py:21
+#: utils/comfunc.py:22
 msgid "End date has been booked"
 msgstr ""
 
-#: utils/comfunc.py:24
+#: utils/comfunc.py:25
 msgid "The date has been booked"
 msgstr ""
 
-#: views.py:114
+#: views.py:117
 msgid "Success"
 msgstr ""

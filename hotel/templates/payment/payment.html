@@ -15,7 +15,13 @@
                         <h3 class="panel-title">
                             {% trans "Payment Details" %}
                         </h3>
-
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static img_url %}">
+                        <div class="card-body">
+                            <p class="card-text">{% trans "Date: " %}{{booking.start_date}}-{{booking.end_date}} </p>
+                            <p class="card-text">{% trans "Price: " %}{{booking.room_price}} </p>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <form action="#" method="POST">

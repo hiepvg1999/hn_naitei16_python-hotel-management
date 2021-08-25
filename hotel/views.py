@@ -293,22 +293,25 @@ def payment(request, booking_id):
     message = ''
     flag = True
     paid_bill = Bill.objects.filter(booking_id = booking_id)
+    room_img = RoomImage.objects.filter(room_id= booking.room_id).first()
     if len(paid_bill):
         message = _("Booking paid. Thank you for using our service")
         flag = False
 
 
-    def send(request, receiver, code):
-        subject = _("Payment Verification")
+    def send(request, receiver, code, booking):
+        subject = "Payment Verification"
         text = """
             Dear {guestName},
+            Booking detail: {start_date} - {end_date}, {price}
             Please Copy Paste This Code in the verification Window:
             {code}
             Please ignore this email, if you didn't initiate this transaction!
         """
         # placing the code and user name in the email bogy text
         email_text = text.format(
-            guestName=receiver.first_name + " " + receiver.last_name, code=code)
+            guestName=receiver.first_name + " " + receiver.last_name, start_date= str(booking.start_date), end_date= str(booking.end_date),\
+            price= booking.room_price, code=code)
 
         # seting up the email
         message_email = EMAIL_HOST_USER
@@ -326,7 +329,7 @@ def payment(request, booking_id):
         )
 
     if flag and len(paid_bill) == 0:
-        send(request, request.user, code)
+        send(request, request.user, code, booking)
     data = request.POST
     if request.method == 'POST':
         if "pay" in data:
@@ -338,5 +341,5 @@ def payment(request, booking_id):
                 newBill.save()
                 message = _("successful payment")
                 return redirect('user-profile')
-    context = {"message": message, "code": code, "flag": flag}
+    context = {"message": message, "code": code, "flag": flag, "booking": booking, "img_url": room_img}
     return render(request, 'payment/payment.html', context)

@@ -1,0 +1,77 @@
+{% extends '../index.html' %}
+{% load i18n %}
+{% block context %}
+{% load static %}
+{% if flag == False %}
+    <div class="d-flex justify-content-center text-warning py-5">
+        <h1>{% trans message %}</h1>
+    </div>
+{% else %}
+    <div class="container py-5 ">
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {% trans "Payment Details" %}
+                        </h3>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static img_url %}">
+                        <div class="card-body">
+                            <p class="card-text">{% trans "Date: " %}{{booking.start_date}}-{{booking.end_date}} </p>
+                            <p class="card-text">{% trans "Price: " %}{{booking.room_price}} </p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="cardNumber">
+                                    {% trans "CARD NUMBER" %}</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="cardNumber"
+                                        placeholder="Valid Card Number" min="0" max="9999999999999999" required=""
+                                        autofocus />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-7 col-md-7">
+                                    <div class="form-group">
+                                        <label for="expityMonth">
+                                            {% trans "EXPIRY DATE" %}</label>
+                                        <div class="col-xs-6 col-lg-6 pl-ziro">
+                                            <input type="number" class="form-control" id="expityMonth" min="0" max="12"
+                                                placeholder="MM" required="" />
+                                        </div>
+                                        <div class="col-xs-6 col-lg-6 pl-ziro">
+                                            <input type="number" class="form-control" id="expityYear" placeholder="YY"
+                                                required="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5 col-md-5 pull-right">
+                                    <div class="form-group">
+                                        <label for="cvCode">
+                                            {% trans "CV CODE" %}</label>
+                                        <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <label class="input-group-lg" for="verification">{% trans "Please Enter The Code We Sent to your Email" %}</label>
+                            </div>
+                            <div class="row justify-content-center py-3">
+                                <input class="form-control form-control-lg" type="text" placeholder="Verification" name="inputCode">
+                            </div>
+                            <input type="hidden" value="{{code}}" name="tempCode">
+                            <button type="submit" class="btn btn-success btn-lg btn-block" name= "pay">{% trans "Pay" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -10,11 +10,12 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.utils.translation import ugettext_lazy as _
-from .models import Room, Booking, RoomImage, User
+from .models import Room, Booking, RoomImage, User, Bill
 from .forms import NewUserForm, EditRoomForm, UserForm
+from hotel.utils import constants, comfunc
 from datetime import datetime, date, timedelta
 import random
-from hotel.utils import constants, comfunc
+import io, base64
 def user_register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -205,7 +206,7 @@ def list_users(request):
         else:
             context = {'users': users}
         return render(request,'user/list-users.html',context)
- 
+
 @login_required
 @permission_required('hotel.staff_booking_list', raise_exception=True)
 def list_bookings_staff(request):
@@ -241,3 +242,38 @@ def list_bookings_staff(request):
         "bookings": bookings
     }
     return render(request, 'user/staff-list-bookings.html', context)
+
+@login_required
+@permission_required('hotel.statistic_page', raise_exception=True)
+def statistic_page(request):
+    # user
+    users_len = len(User.objects.filter(Q(is_active=True)))
+
+    # room
+    rooms_len = Room.objects.count()
+
+    # total
+    bills = Bill.objects.select_related('booking_id')
+    total = comfunc.get_total_all_bill(bills)
+
+    # function handle filter status from list booking
+    def filter_by_status(i_list, i_status):
+        return [item for item in i_list if item.status == i_status]
+
+    # create bar plot for booking
+    # booking
+    bookings = list(Booking.objects.all())
+    approved_bookings_len = len(filter_by_status(bookings, constants.APPROVED))
+    waiting_bookings_len = len(filter_by_status(bookings, constants.WAITING))
+    cancelled_booking_len = len(filter_by_status(bookings, constants.CANCEL))
+    rejected_booking_len = len(filter_by_status(bookings, constants.REJECTED))
+
+    bookings_keys = [constants.APPROVED, constants.CANCEL, constants.WAITING, constants.REJECTED]
+    bookings_values = [approved_bookings_len, cancelled_booking_len, waiting_bookings_len, rejected_booking_len]
+
+    chart = comfunc.build_chart(bookings_keys, bookings_values)
+
+    # context
+    context = {'users_len': users_len, 'chart': chart, 'total': total, 'rooms_len': rooms_len}
+
+    return render(request, 'statistic/staff_statistic_page.html', context)

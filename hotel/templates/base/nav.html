@@ -4,7 +4,7 @@
         <a href="{% url 'index' %}" class="navbar-brand btn">
             <h2 class="text-capitalize">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'user-profile' %}">{{ user.username }}</a>-
+                    <a href="{% url 'user-profile' %}" class="link_profile">{{ user.username }}</a>-
                     {% if user.is_staff %}
                         <small> {% trans "Admin" %} </small>
                     {% else %}
@@ -36,6 +36,7 @@
                                 <a class="dropdown-item" href="{% url 'room-add' %}">{% trans "Add room" %}</a>
                                 <a class="dropdown-item" href="{% url 'list-users' %}">{% trans "List users" %}</a>
                                 <a class="dropdown-item" href="{% url 'list-bookings-staff' %}">{% trans "List bookings" %}</a>
+                                <a class="dropdown-item" href="{% url 'statistic_page' %}">{% trans "Statistic page" %}</a>
                             {% else %}
                                 <a class="dropdown-item" href="{% url 'user-profile' %}">{% trans "Profile" %}</a>
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Room" %}</a>

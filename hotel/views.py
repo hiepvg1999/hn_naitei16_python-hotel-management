@@ -8,6 +8,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views import generic
+from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.utils.translation import ugettext_lazy as _
 from .models import Room, Booking, RoomImage, User, Bill
@@ -16,6 +17,9 @@ from hotel.utils import constants, comfunc
 from datetime import datetime, date, timedelta
 import random
 import io, base64
+import string
+from hotel_management.settings import EMAIL_HOST_USER
+
 def user_register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -211,7 +215,7 @@ def list_users(request):
 @permission_required('hotel.staff_booking_list', raise_exception=True)
 def list_bookings_staff(request):
     bookings = Booking.objects.filter(status = constants.WAITING)
-    if request.method == "GET": 
+    if request.method == "GET":
         data_g = request.GET
         room = data_g.get('room')
         user = data_g.get('user')
@@ -277,3 +281,62 @@ def statistic_page(request):
     context = {'users_len': users_len, 'chart': chart, 'total': total, 'rooms_len': rooms_len}
 
     return render(request, 'statistic/staff_statistic_page.html', context)
+
+@login_required
+def payment(request, booking_id):
+    code = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase) \
+                   for _ in range(10))
+
+    booking = Booking.objects.filter(booking_id = booking_id).first()
+    delta = booking.end_date - booking.start_date
+    total = delta.days * booking.room_price
+    message = ''
+    flag = True
+    paid_bill = Bill.objects.filter(booking_id = booking_id)
+    if len(paid_bill):
+        message = _("Booking paid. Thank you for using our service")
+        flag = False
+
+
+    def send(request, receiver, code):
+        subject = _("Payment Verification")
+        text = """
+            Dear {guestName},
+            Please Copy Paste This Code in the verification Window:
+            {code}
+            Please ignore this email, if you didn't initiate this transaction!
+        """
+        # placing the code and user name in the email bogy text
+        email_text = text.format(
+            guestName=receiver.first_name + " " + receiver.last_name, code=code)
+
+        # seting up the email
+        message_email = EMAIL_HOST_USER
+        message = email_text
+        receiver_name = receiver.first_name + " " + receiver.last_name
+
+        # send email
+        send_mail(
+            receiver_name + " " + subject,  # subject
+            message,  # message
+            message_email,  # from email
+            [receiver.email],  # to email
+            fail_silently=False,  # for user in users :
+            # user.email
+        )
+
+    if flag and len(paid_bill) == 0:
+        send(request, request.user, code)
+    data = request.POST
+    if request.method == 'POST':
+        if "pay" in data:
+            tempCode = data.get('tempCode')
+            inputCode = data.get('inputCode')
+            if tempCode == inputCode:
+                summary = request.user.email + " paid booking( " + str(booking_id) + " )"
+                newBill = Bill(booking_id = booking, summary = summary, totalAmount= total)
+                newBill.save()
+                message = _("successful payment")
+                return redirect('user-profile')
+    context = {"message": message, "code": code, "flag": flag}
+    return render(request, 'payment/payment.html', context)

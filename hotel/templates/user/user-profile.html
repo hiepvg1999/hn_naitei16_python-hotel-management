@@ -36,15 +36,35 @@
                     </a>
                 {% endif %}
             </div>
-            <div class="col-12">
-                <h4>{% trans 'Booking List:' %}</h4>
-                {% for book in user.booking_set.all %}
-                    <hr>
-                    <span class="ml-5 mr-5 pl-5">{{book.room_id}}</span>
-                    <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
-                    <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
-                {% endfor %}
-            </div>
+            <h4>{% trans 'Booking List:' %}</h4>
+            <table class="table table-hover table-striped">
+                <thead class="bg-secondary rounded">
+                    <tr>
+                        <th>{% trans "Room Number" %} </th>
+                        <th>{% trans "Date" %} </th>
+                        <th>{% trans "Status" %} </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in user.booking_set.all %}
+                        <tr>
+                            <td>{{book.room_id}}</td>
+                            <td>{{book.start_date}} - {{book.end_date}}</td>
+                            <td>{{book.status}}</td>
+                            <td>
+                                {% if book.status == 'approved' %}
+                                    <form action="" method="POST">
+                                        <a href="{% url 'payment' book.booking_id %}" class="btn btn-sm btn-primary w-50">
+                                            {% trans "Payment" %}
+                                        </a>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

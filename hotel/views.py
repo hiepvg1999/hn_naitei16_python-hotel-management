@@ -248,6 +248,7 @@ def list_bookings_staff(request):
     return render(request, 'user/staff-list-bookings.html', context)
 
 @login_required
+
 @permission_required('hotel.statistic_page', raise_exception=True)
 def statistic_page(request):
     # user
@@ -293,22 +294,25 @@ def payment(request, booking_id):
     message = ''
     flag = True
     paid_bill = Bill.objects.filter(booking_id = booking_id)
+    room_img = RoomImage.objects.filter(room_id= booking.room_id).first()
     if len(paid_bill):
-        message = _("Booking paid. Thank you for using our service")
+        message = str(_("Booking paid. Thank you for using our service"))
         flag = False
 
 
-    def send(request, receiver, code):
-        subject = _("Payment Verification")
+    def send(request, receiver, code, booking):
+        subject = str(_("Payment Verification"))
         text = """
             Dear {guestName},
+            Booking detail: {start_date} - {end_date}, {price}
             Please Copy Paste This Code in the verification Window:
             {code}
             Please ignore this email, if you didn't initiate this transaction!
         """
         # placing the code and user name in the email bogy text
         email_text = text.format(
-            guestName=receiver.first_name + " " + receiver.last_name, code=code)
+            guestName=receiver.first_name + " " + receiver.last_name, start_date= str(booking.start_date), end_date= str(booking.end_date),\
+            price= booking.room_price, code=code)
 
         # seting up the email
         message_email = EMAIL_HOST_USER
@@ -326,17 +330,17 @@ def payment(request, booking_id):
         )
 
     if flag and len(paid_bill) == 0:
-        send(request, request.user, code)
+        send(request, request.user, code, booking)
     data = request.POST
     if request.method == 'POST':
         if "pay" in data:
             tempCode = data.get('tempCode')
             inputCode = data.get('inputCode')
             if tempCode == inputCode:
-                summary = request.user.email + " paid booking( " + str(booking_id) + " )"
+                summary = request.user.email+ " paid booking( " + str(booking_id) + " )"
                 newBill = Bill(booking_id = booking, summary = summary, totalAmount= total)
                 newBill.save()
-                message = _("successful payment")
+                message = str(_("successful payment"))
                 return redirect('user-profile')
-    context = {"message": message, "code": code, "flag": flag}
+    context = {"message": message, "code": code, "flag": flag, "booking": booking, "img_url": room_img}
     return render(request, 'payment/payment.html', context)

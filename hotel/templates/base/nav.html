@@ -40,6 +40,7 @@
                             {% else %}
                                 <a class="dropdown-item" href="{% url 'user-profile' %}">{% trans "Profile" %}</a>
                                 <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Room" %}</a>
+                                <a class="dropdown-item" href="{% url 'list-booking-user' %}">{% trans "List bookings" %}</a>
                             {% endif %}
                         {% else %}
                             <a class="dropdown-item" href="{% url 'rooms' %}">{% trans "Room" %}</a>

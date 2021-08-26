@@ -1,0 +1,39 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static %}
+{% load i18n %}
+<div class="container py-5 clearfix">
+    <div class="table-header row mt-3 clearfix">
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-4">
+            <h2>{% trans "Booking List" %}</h2>
+        </div>
+    </div>
+    <table class="table table-hover table-striped">
+        <thead class="bg-secondary rounded">
+            <tr>
+                <th>{% trans "Room ID" %}</th>
+                <th>{% trans "Start" %}</th>
+                <th>{% trans "End" %}</th>
+                <th>{% trans "Status" %}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr id="tr-row-{{booking.booking_id}}">
+                <td>{{ booking.room_id}}</td>
+                <td>{{ booking.start_date }}</td>
+                <td>{{ booking.end_date }}</td>
+                <td>{{ booking.status }}</td>
+                <form method='POST'>
+                    {% csrf_token %}
+                    <td>                   
+                        <button id="cancel_{{booking.booking_id}}" type="submit" class="btn btn-success btn-primary w-100 cancel" value='{{booking.booking_id}}' >{% trans 'Cancel' %}</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

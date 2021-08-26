@@ -346,3 +346,16 @@ def payment(request, booking_id):
                 return redirect('user-profile')
     context = {"message": message, "code": code, "flag": flag, "booking": booking, "img_url": room_img}
     return render(request, 'payment/payment.html', context)
+
+def list_bookings_user(request):
+    bookings = Booking.objects.filter(Q(user = request.user), Q(status = constants.WAITING))
+    if request.method == "POST":
+        data_p = request.POST
+        booking_id = data_p.getlist('booking')[0]
+        action = data_p.getlist('action')[0]
+        if action == 'cancel':
+            bookings.filter(pk = booking_id).update(status = constants.CANCEL)       
+    context = {
+        "bookings": bookings
+    }
+    return render(request, 'user/user-list-booking.html', context)

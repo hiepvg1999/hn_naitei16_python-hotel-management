@@ -28,24 +28,19 @@
         </thead>
         <tbody>
             {% for booking in bookings %}
-            <tr>
+            <tr id="tr-row-{{booking.booking_id}}">
                 <td>{{ booking.room_id}}</td>
                 <td>{{ booking.user }}</td>
                 <td>{{ booking.start_date }}</td>
                 <td>{{ booking.end_date }}</td>
                 <td>{{ booking.status }}</td>
-                <form action="" method="POST">
+                <form method='POST'>
                     {% csrf_token %}
-                    <input type="hidden" name="booking" value="{{ booking.booking_id }}">
-                    <td>
-                        <a href="">
-                            <button type="submit" name="accept" class="btn btn-success btn-primary w-100">{% trans 'Accept' %}</button>
-                        </a>
+                    <td>                   
+                        <button id="accept_{{booking.booking_id}}" type="submit" class="btn btn-success btn-primary w-100 accept" value='{{booking.booking_id}}' >{% trans 'Accept' %}</button>
                     </td>
-                    <td>
-                        <a href="">
-                            <button type="submit" name="decline" class="btn btn-danger btn-primary w-100">{% trans 'Decline' %}</button>
-                        </a>
+                    <td>                   
+                        <button id="decline_{{booking.booking_id}}" type="submit" class="btn btn-danger btn-primary w-100 decline" value='{{booking.booking_id}}'>{% trans 'Decline' %}</button>
                     </td>
                 </form>
             </tr>

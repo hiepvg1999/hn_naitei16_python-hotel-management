@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views import generic
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -212,10 +213,10 @@ def list_users(request):
         return render(request,'user/list-users.html',context)
 
 @login_required
-@permission_required('hotel.staff_booking_list', raise_exception=True)
+@staff_member_required
 def list_bookings_staff(request):
     bookings = Booking.objects.filter(status = constants.WAITING)
-    if request.method == "GET":
+    if request.method == "GET": 
         data_g = request.GET
         room = data_g.get('room')
         user = data_g.get('user')
@@ -236,10 +237,11 @@ def list_bookings_staff(request):
             return render(request, 'user/staff-list-bookings.html', context)
     elif request.method == "POST":
         data_p = request.POST
-        booking_id = data_p.get('booking')
-        if 'accept' in data_p:
+        booking_id = data_p.getlist('booking')[0]
+        action = data_p.getlist('action')[0]
+        if action == 'accept':
             bookings.filter(pk = booking_id).update(status = constants.APPROVED)
-        if 'decline' in data_p:
+        if action == 'decline':
             bookings.filter(pk = booking_id).update(status = constants.REJECTED)
     bookings = Booking.objects.filter(status = constants.WAITING)
     context = {

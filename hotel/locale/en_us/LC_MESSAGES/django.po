@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 19:54+0700\n"
+"POT-Creation-Date: 2021-08-26 14:59+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: templates/base/nav.html:34 templates/base/nav.html:40
+#: templates/base/nav.html:34 templates/base/nav.html:41
 msgid "Profile"
 msgstr ""
 
@@ -89,19 +89,24 @@ msgstr ""
 msgid "List users"
 msgstr ""
 
-#: templates/base/nav.html:38
+#: templates/base/nav.html:38 templates/base/nav.html:43
 msgid "List bookings"
 msgstr ""
 
-#: templates/base/nav.html:41 templates/base/nav.html:44
+#: templates/base/nav.html:39
+msgid "Statistic page"
+msgstr ""
+
+#: templates/base/nav.html:42 templates/base/nav.html:46
+#: templates/statistic/staff_statistic_page.html:23
 msgid "Room"
 msgstr ""
 
-#: templates/base/nav.html:50
+#: templates/base/nav.html:52
 msgid "Log Out"
 msgstr ""
 
-#: templates/base/nav.html:54
+#: templates/base/nav.html:56
 msgid "Log In"
 msgstr ""
 
@@ -169,6 +174,38 @@ msgstr ""
 
 #: templates/landing_page/slider.html:46
 msgid "Next"
+msgstr ""
+
+#: templates/payment/payment.html:16
+msgid "Payment Details"
+msgstr ""
+
+#: templates/payment/payment.html:22
+msgid "Date: "
+msgstr ""
+
+#: templates/payment/payment.html:23
+msgid "Price: "
+msgstr ""
+
+#: templates/payment/payment.html:31
+msgid "CARD NUMBER"
+msgstr ""
+
+#: templates/payment/payment.html:43
+msgid "EXPIRY DATE"
+msgstr ""
+
+#: templates/payment/payment.html:57
+msgid "CV CODE"
+msgstr ""
+
+#: templates/payment/payment.html:63
+msgid "Please Enter The Code We Sent to your Email"
+msgstr ""
+
+#: templates/payment/payment.html:69
+msgid "Pay"
 msgstr ""
 
 #: templates/registration/login.html:3
@@ -275,7 +312,7 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: templates/room/rooms.html:39
+#: templates/room/rooms.html:39 templates/user/user-profile.html:43
 msgid "Room Number"
 msgstr ""
 
@@ -299,45 +336,54 @@ msgstr ""
 msgid "Edit&nbsp;Room"
 msgstr ""
 
+#: templates/statistic/staff_statistic_page.html:9
+#: templates/user/staff-list-bookings.html:19
+msgid "User"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:11
+msgid "Number of users"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:12
+msgid "There are"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:12
+msgid "active users in system"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:16
+msgid "Total"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:18
+msgid "Total in this month"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:19
+msgid "Income of hotel in this month:"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:25
+msgid "Number of rooms"
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:26
+msgid "There are "
+msgstr ""
+
+#: templates/statistic/staff_statistic_page.html:26
+msgid " rooms in hotel"
+msgstr ""
+
 #: templates/user/edit-profile.html:14
 msgid "Save"
 msgstr ""
 
-#: templates/user/list-bookings.html:8
-msgid "Booking List For Staff"
-msgstr ""
-
-#: templates/user/list-bookings.html:14
-msgid "Room ID"
-msgstr ""
-
-#: templates/user/list-bookings.html:15
-msgid "User"
-msgstr ""
-
-#: templates/user/list-bookings.html:16
-msgid "Start"
-msgstr ""
-
-#: templates/user/list-bookings.html:17
-msgid "End"
-msgstr ""
-
-#: templates/user/list-bookings.html:18
-msgid "Status"
-msgstr ""
-
-#: templates/user/list-bookings.html:19 templates/user/list-users.html:11
-#: templates/user/list-users.html:12
+#: templates/user/list-users.html:11 templates/user/list-users.html:12
+#: templates/user/staff-list-bookings.html:25
 msgid "Search"
-msgstr ""
-
-#: templates/user/list-bookings.html:32
-msgid "Accept"
-msgstr ""
-
-#: templates/user/list-bookings.html:37
-msgid "Decline"
 msgstr ""
 
 #: templates/user/list-users.html:22 templates/user/user-profile.html:10
@@ -360,7 +406,7 @@ msgstr ""
 msgid "Account Creation Date:"
 msgstr ""
 
-#: templates/user/list-users.html:47 templates/user/user-profile.html:40
+#: templates/user/list-users.html:47 templates/user/user-profile.html:39
 msgid "Booking List:"
 msgstr ""
 
@@ -368,30 +414,102 @@ msgstr ""
 msgid "No users found with the phrase"
 msgstr ""
 
+#: templates/user/staff-list-bookings.html:8
+msgid "Booking List For Staff"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:16
+#: templates/user/user-list-booking.html:14
+msgid "Room ID"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:22
+#: templates/user/user-list-booking.html:15
+msgid "Start"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:23
+#: templates/user/user-list-booking.html:16
+msgid "End"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:24
+#: templates/user/user-list-booking.html:17 templates/user/user-profile.html:45
+msgid "Status"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:40
+msgid "Accept"
+msgstr ""
+
+#: templates/user/staff-list-bookings.html:43
+msgid "Decline"
+msgstr ""
+
+#: templates/user/user-list-booking.html:8
+msgid "Booking List"
+msgstr ""
+
+#: templates/user/user-list-booking.html:31
+msgid "Cancel"
+msgstr ""
+
 #: templates/user/user-profile.html:35
 msgid "Edit"
 msgstr ""
 
-#: utils/comfunc.py:11
+#: templates/user/user-profile.html:44
+msgid "Date"
+msgstr ""
+
+#: templates/user/user-profile.html:59
+msgid "Payment"
+msgstr ""
+
+#: utils/comfunc.py:13
 msgid "Start date and End date >= now"
 msgstr ""
 
-#: utils/comfunc.py:15
+#: utils/comfunc.py:17
 msgid "End date >= Start date"
 msgstr ""
 
-#: utils/comfunc.py:19
+#: utils/comfunc.py:21
 msgid "Start date has been booked"
 msgstr ""
 
-#: utils/comfunc.py:22
+#: utils/comfunc.py:24
 msgid "End date has been booked"
 msgstr ""
 
-#: utils/comfunc.py:25
+#: utils/comfunc.py:27
 msgid "The date has been booked"
 msgstr ""
 
-#: views.py:117
+#: utils/comfunc.py:39
+msgid "Booking types"
+msgstr ""
+
+#: utils/comfunc.py:40
+msgid "Num of booking for each types"
+msgstr ""
+
+#: utils/comfunc.py:40
+msgid "Booking figure"
+msgstr ""
+
+#: views.py:123
 msgid "Success"
+msgstr ""
+
+#: views.py:301
+msgid "Booking paid. Thank you for using our service"
+msgstr ""
+
+#: views.py:306
+msgid "Payment Verification"
+msgstr ""
+
+#: views.py:345
+msgid "successful payment"
 msgstr ""

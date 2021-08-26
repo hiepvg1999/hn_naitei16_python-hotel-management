@@ -48,18 +48,18 @@
                 </thead>
                 <tbody>
                     {% for book in user.booking_set.all %}
-                        <tr>
+                        <tr tr-row-{{book.booking_id}}>
                             <td>{{book.room_id}}</td>
                             <td>{{book.start_date}} - {{book.end_date}}</td>
                             <td>{{book.status}}</td>
                             <td>
-                                {% if book.status == 'approved' %}
-                                    <form action="" method="POST">
-                                        <a href="{% url 'payment' book.booking_id %}" class="btn btn-sm btn-primary w-50">
+                                <form action="" method="POST">
+                                    {% if book.status == 'approved' %}
+                                        <a href="{% url 'payment' book.booking_id %}" class="btn btn-sm btn-primary w-100">
                                             {% trans "Payment" %}
                                         </a>
-                                    </form>
-                                {% endif %}
+                                    {% endif %}
+                                </form>                        
                             </td>
                         </tr>
                     {% endfor %}

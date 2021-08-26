@@ -336,7 +336,7 @@ def payment(request, booking_id):
             tempCode = data.get('tempCode')
             inputCode = data.get('inputCode')
             if tempCode == inputCode:
-                summary = request.user.email + " paid booking( " + str(booking_id) + " )"
+                summary = request.user.email+ " paid booking( " + str(booking_id) + " )"
                 newBill = Bill(booking_id = booking, summary = summary, totalAmount= total)
                 newBill.save()
                 message = _("successful payment")

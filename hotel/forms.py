@@ -44,7 +44,7 @@ class NewUserForm(UserCreationForm):
         if User.objects.filter(username__iexact=username).exists():
             raise forms.ValidationError(_("Username is already in use."))
         return username
-    
+
 class UserForm(forms.ModelForm):
     class Meta:
         model = User

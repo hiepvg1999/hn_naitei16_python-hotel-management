@@ -216,7 +216,7 @@ def list_users(request):
 @staff_member_required
 def list_bookings_staff(request):
     bookings = Booking.objects.filter(status = constants.WAITING)
-    if request.method == "GET": 
+    if request.method == "GET":
         data_g = request.GET
         room = data_g.get('room')
         user = data_g.get('user')
@@ -354,7 +354,7 @@ def list_bookings_user(request):
         booking_id = data_p.getlist('booking')[0]
         action = data_p.getlist('action')[0]
         if action == 'cancel':
-            bookings.filter(pk = booking_id).update(status = constants.CANCEL)       
+            bookings.filter(pk = booking_id).update(status = constants.CANCEL)
     context = {
         "bookings": bookings
     }

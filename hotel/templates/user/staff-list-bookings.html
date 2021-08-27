@@ -36,10 +36,10 @@
                 <td>{{ booking.status }}</td>
                 <form method='POST'>
                     {% csrf_token %}
-                    <td>                   
+                    <td>
                         <button id="accept_{{booking.booking_id}}" type="submit" class="btn btn-success btn-primary w-100 accept" value='{{booking.booking_id}}' >{% trans 'Accept' %}</button>
                     </td>
-                    <td>                   
+                    <td>
                         <button id="decline_{{booking.booking_id}}" type="submit" class="btn btn-danger btn-primary w-100 decline" value='{{booking.booking_id}}'>{% trans 'Decline' %}</button>
                     </td>
                 </form>

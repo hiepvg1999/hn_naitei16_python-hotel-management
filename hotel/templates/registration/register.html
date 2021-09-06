@@ -1,9 +1,20 @@
+{% extends '../index.html' %}
+{% block context %}
+{% load static%}
 {% load i18n %}
-<h1>{% trans 'Register' %}</h1>
-<form method = "post">
-    {% csrf_token %}
-    <table>
-        {{form.as_table}}
-    </table>
-    <input type ="submit" value={% trans 'Submit' %}>
-</form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1>{% trans 'Register' %}</h1>
+            <hr class="mt-0 mb-4">
+            <form method = "post">
+                {% csrf_token %}
+                <table>
+                    {{form.as_table}}
+                </table>
+                <button type ="submit" class="btn btn-success"> {% trans 'Submit' %} </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

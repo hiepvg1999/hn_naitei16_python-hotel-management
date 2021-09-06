@@ -33,7 +33,7 @@
                 <div class="image">
                     {%for url in room.roomimage_set.all%}
                         <div class="col-4">
-                            <img src="{% static url %}" />
+                            <img src="{% static url.img_url %}" />
                         </div>
                     {% endfor %}
                 </div>

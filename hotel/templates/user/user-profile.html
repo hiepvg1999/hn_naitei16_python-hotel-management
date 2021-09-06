@@ -15,6 +15,17 @@
                     <span>{% trans 'Surname:' %}</span>
                     <span class="font-weight-normal"> {{user.last_name}}</span>
                 </div>
+                {% if user.is_staff %}
+                    <div class="p-2 h4">
+                        <span>{% trans 'User type:' %}</span>
+                        <span class="font-weight-normal"> {% trans "Admin" %}</span>
+                    </div>
+                {% else %}
+                    <div class="p-2 h4">
+                        <span>{% trans 'User type:' %}</span>
+                        <span class="font-weight-normal"> {% trans "Guest" %}</span>
+                    </div>
+                {% endif %}
 
                 <div class="p-2 h4">
                     <span>{% trans 'Email:' %}</span>

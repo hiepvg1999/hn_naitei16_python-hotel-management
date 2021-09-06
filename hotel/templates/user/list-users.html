@@ -15,45 +15,48 @@
     </div>
     <br>
     {% if user_search %}
-        <div class="shadow-lg p-5">
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="p-2 h4">
-                        <span>{% trans 'First Name:'%}</span>
-                        <span class="font-weight-normal">{{user_search.first_name}} </span>
-                    </div>
+        {% for user_s in user_search %}
+            <div class="shadow-lg p-5">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="p-2 h4">
+                            <span>{% trans 'First Name:'%}</span>
+                            <span class="font-weight-normal">{{user_s.first_name}} </span>
+                        </div>
 
-                    <div class="p-2 h4">
-                        <span>{% trans 'Surname:' %}</span>
-                        <span class="font-weight-normal"> {{user_search.last_name}}</span>
-                    </div>
+                        <div class="p-2 h4">
+                            <span>{% trans 'Surname:' %}</span>
+                            <span class="font-weight-normal"> {{user_s.last_name}}</span>
+                        </div>
 
-                    <div class="p-2 h4">
-                        <span>{% trans 'Email:' %}</span>
-                        <span class="font-weight-normal">{{user_search.email}}</span>
-                    </div>
+                        <div class="p-2 h4">
+                            <span>{% trans 'Email:' %}</span>
+                            <span class="font-weight-normal text-warning">{{user_s.email}}</span>
+                        </div>
 
-                    <div class="p-2 h4">
-                        <span>{% trans 'Phone Number:' %}</span>
-                        <span class="font-weight-normal">{{user_search.phoneNumber}}</span>
-                    </div>
+                        <div class="p-2 h4">
+                            <span>{% trans 'Phone Number:' %}</span>
+                            <span class="font-weight-normal text-warning">{{user_s.phoneNumber}}</span>
+                        </div>
 
-                    <div class="p-2 h4">
-                        <span>{% trans 'Account Creation Date:' %}</span>
-                        <span class="font-weight-normal">{{user_search.date_joined}}</span>
+                        <div class="p-2 h4">
+                            <span>{% trans 'Account Creation Date:' %}</span>
+                            <span class="font-weight-normal">{{user_s.date_joined}}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <h4>{% trans 'Booking List:' %}</h4>
-                    {% for book in user_search.booking_set.all %}
-                        <hr>
-                        <span class="ml-5 mr-5 pl-5">{{book.room_id}}</span>
-                        <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
-                        <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
-                    {% endfor %}
+                    <div class="col-12">
+                        <h4>{% trans 'Booking List:' %}</h4>
+                        {% for book in user_s.booking_set.all %}
+                            <hr>
+                            <span class="ml-5 mr-5 pl-5">{{book.room_id}}</span>
+                            <span class="ml-5 mr-5 pl-5">{{book.start_date}} - {{book.end_date}}</span>
+                            <span class="ml-5 mr-5 pl-5">{{book.status}}</span>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
+            <br>
+        {% endfor %}
     {% else %}
         {% if search_str %}
             <div class="text">

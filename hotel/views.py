@@ -42,7 +42,6 @@ def rooms(request):
     rooms = Room.objects.all()
     check_in = None
     check_out = None
-    room_arr = []
     def check_valid(start_date, end_date):
         availableRooms = []
         for room in rooms:
@@ -80,7 +79,7 @@ def rooms(request):
             if data.get('price') != '':
                 rooms = rooms.filter(room_price__lte= data.get('price'))
             context = {
-                "rooms": room_arr,
+                "rooms": rooms,
                 "id": data.get("id"),
                 "capacity": data.get("capacity"),
                 "nob": data.get("nob"),
@@ -204,8 +203,8 @@ def list_users(request):
         if user_search is not None:
             user_search = user_search.strip()
             if user_search != '':
-                user_s = User.objects.filter(Q(email__icontains= user_search) | Q(phoneNumber__icontains= user_search)).first()
-                context = {'user_search': user_s, 'search_str': user_search}
+                users = users.filter(Q(email__icontains= user_search) | Q(phoneNumber__icontains= user_search))
+                context = {'user_search': users, 'search_str': user_search}
             else:
                 context = {'users': users}
         else:

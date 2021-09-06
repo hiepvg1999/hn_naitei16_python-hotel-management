@@ -1,19 +1,9 @@
 {% load i18n %}
+{% load static %}
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 ">
     <div class="container">
-        <a href="{% url 'index' %}" class="navbar-brand btn">
-            <h2 class="text-capitalize">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'user-profile' %}" class="link_profile">{{ user.username }}</a>-
-                    {% if user.is_staff %}
-                        <small> {% trans "Admin" %} </small>
-                    {% else %}
-                        <small> {% trans "Guest"%} </small>
-                    {% endif %}
-                {% else %}
-                    <small>{% trans "Welcome to our hotel" %}</small>
-                {% endif %}
-            </h2>
+        <a href="{% url 'index' %}" class="navbar-brand">
+            <img src="{% static 'image/common/logo.png' %}" height= "50">
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarTags">
             <span class="navbar-toggler-icon"></span>
